@@ -1,0 +1,34 @@
+<div class="sideBar d-flex flex-column justify-content-between align-items-center">
+    <div class="logo">
+        <img src="../../../../../assets/images/sideBarLogo.svg" alt="" class="img-fluid">
+    </div>
+    <div class="sideBarMenu">
+        <div class="sideBarMenuTitle">
+            <p>
+                Configure Steps
+            </p>
+        </div>
+        <div class="sideBarMenuLinks" *ngIf="links.length > 0">
+            <div class="sideBarMenuLink">
+               <a [routerLink]="activeRoute" (click)="updateBars()" routerLinkActive="activeLink" >
+                <tui-svg
+                src="tuiIconSlidersLarge"
+                class="icon"
+                ></tui-svg>
+                User Roles</a>
+            </div>
+            <div class="sideBarMenuLink" *ngFor="let link of links;">
+               
+                 <a [routerLink]="link.linkName" (click)="updateBars()" routerLinkActive="activeLink">
+                    <tui-svg
+                    [src]="link.linkIconSrc"
+                    class="icon"
+                    ></tui-svg>
+                    {{link.elementContent}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="sideBarFooter">
+        <img src="../../../../../assets/images/Pwered_By.svg" alt="" class="img-fluid">
+    </div>
+</div>

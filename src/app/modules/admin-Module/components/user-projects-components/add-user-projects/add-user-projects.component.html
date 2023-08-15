@@ -1,0 +1,157 @@
+<app-popup [popupContent]="content" [popupHeader]="head">
+  <ng-template #head>
+    <div class="titles">
+      <div class="title">
+        <p *ngIf="!editFlag">
+          Add Project
+        </p>
+        <p *ngIf="editFlag">
+          Edit Project
+        </p>
+      </div>
+      <div class="subTitle">
+        <p *ngIf="!editFlag">
+          No Project has been add yet, Add!
+        </p>
+      </div>
+    </div>
+    <div (click)="closeForm()" class="closePopup">
+      <app-close-icon></app-close-icon>
+    </div>
+  </ng-template>
+  <ng-template #content>
+    <form class="h-100" [formGroup]="addProject">
+      <div class="tui-row tui-row_sme h-100">
+        <div class="tui-col_8 h-100 d-flex flex-column">
+          <h3 class="tui-form__header tui-form__header_margin-top_none">Project</h3>
+          <div class="tui-form__row">
+            <app-input-text [name]="handlers.projectName"
+                            [inputControl]="addProject.controls.projectName"></app-input-text>
+          </div>
+          <h3 class="tui-form__header tui-form__header_margin-top_none">Environments</h3>
+          <div *ngIf="currentEnvironments.length>0">
+            <ng-container *ngFor="let env of currentEnvironments?.controls; let envNameIndex = index">
+              <div class="customEnvName d-flex justify-content-between align-items-center">
+                <div class="envName d-flex flex-column align-items-start">
+                  <p class="envTitle">
+                    Environment Name
+                  </p>
+                  <p class="envValue">
+                    {{env.controls.name.value}}
+                  </p>
+                </div>
+                <div (click)="showEditPopup(envNameIndex)" class="editIcon">
+                  <tui-svg src="tuiIconEditLarge" class="icon"></tui-svg>
+                </div>
+
+              </div>
+            </ng-container>
+          </div>
+          <div class="tui-form__row" formArrayName="environments"
+               *ngIf="currentEnvironments?.controls.length">
+            <ng-container
+              *ngFor="let environment of currentEnvironments?.controls; let environmentIndex = index">
+              <div [formGroupName]="environmentIndex">
+                <!-- Start Add Environment Popup -->
+                <app-popup *ngIf="showEnvPopup" [popupContent]="envContent" [popupHeader]="envHead">
+                  <ng-template #envHead>
+                    <div class="titles">
+                      <div class="title">
+                        <p *ngIf="!editFlag">
+                          Add Environment
+                        </p>
+                        <p *ngIf="editFlag">
+                          Edit Environment
+                        </p>
+                      </div>
+                      <div class="subTitle">
+                        <p *ngIf="!editFlag">
+                          No Environment has been add yet, Add!
+                        </p>
+                      </div>
+                    </div>
+                    <div (click)="closeEnvForm(environmentIndex)" class="closePopup">
+                      <app-close-icon></app-close-icon>
+                    </div>
+                  </ng-template>
+                  <ng-template #envContent>
+                    <form class="h-100" [formGroup]="addProject">
+                      <div class="tui-row tui-row_sme h-100">
+                        <div class="tui-col_8 h-100 d-flex flex-column">
+                          <h4 class="tui-form__header tui-form__header_margin-top_none">
+                            Environment Information</h4>
+                          <div class="tui-form__row" formArrayName="environments"
+                               *ngIf="currentEnvironments?.controls.length">
+                            <ng-container>
+                              <div
+                                [formGroupName]="currentEnvironmentIndex">
+                                <ng-container
+                                  *ngFor="let item of getEnvironmentControls(currentEnvironmentIndex); let itemIndex = index">
+                                  <div class="mb-3">
+                                    <app-input-text [name]="handlers[item]??'Unknown'"
+                                                    [type]="item === 'password'? 'password':'clear'"
+                                                    [inputControl]="currentEnvironments.controls[currentEnvironmentIndex].controls[item]"></app-input-text>
+                                  </div>
+                                </ng-container>
+                              </div>
+
+                            </ng-container>
+
+                          </div>
+                          <div class="btns mt-top mb-5 d-flex justify-content-between">
+                            <div class="tui-form__buttons">
+                              <app-button class="popupBtn" [btnName]="cancel"
+                                          [type]="submitBtn" [appearence]="secondary"
+                                          (eventHandler)="closeEnvForm(currentEnvironments?.controls.length -1)"></app-button>
+                            </div>
+
+                            <div class="tui-form__buttons">
+                              <app-button *ngIf="!editFlag" [disabledBtn]="!environment?.valid"
+                                          [btnName]="addEnv" [type]="button"
+                                          [appearence]="primary"
+                                          (eventHandler)="addEnvironmentToForm(currentEnvironments?.controls.length -1)"></app-button>
+
+                              <app-button *ngIf="editFlag" [disabledBtn]="!environment?.valid"
+                                          [btnName]="editEnv" [type]="button"
+                                          [appearence]="primary"
+                                          (eventHandler)="addEnvironmentToForm(currentEnvironments?.controls.length -1)"></app-button>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </form>
+                  </ng-template>
+
+                </app-popup>
+                <!-- End Add Environment Popup -->
+
+              </div>
+            </ng-container>
+          </div>
+          <div *ngIf="!showEnvPopup" class="userRolesActions mt-3">
+            <p (click)="addEnvironment()" class="addUserRole">
+              <app-plus></app-plus>
+              <span>
+                Add Environment
+              </span>
+            </p>
+          </div>
+          <div *ngIf="!showEnvPopup && !editFlag" class="tui-form__buttons mt-top mb-5">
+            <app-button [btnName]="btnName" [type]="submitBtn" [appearence]="primary"
+                        (eventHandler)="addProjectFn()"></app-button>
+          </div>
+          <div *ngIf="!showEnvPopup && editFlag" class="tui-form__buttons mt-top mb-5">
+            <app-button [btnName]="editBtnName" [type]="submitBtn" [appearence]="primary"
+                        (eventHandler)="editProject()"></app-button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </ng-template>
+
+</app-popup>
+<app-dicard-changes (discardConfirmed)="discardChanges()" (discardCanceled)="cancelDiscard()"
+                    *ngIf="showDiscardPopup"></app-dicard-changes>

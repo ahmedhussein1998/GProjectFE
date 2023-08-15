@@ -1,0 +1,15 @@
+<!-- <tui-root> -->
+    <!-- <app-loader *ngIf="auth.showLoaderSubject$ | async" [loader]="showLoader"></app-loader> -->
+    <div class="appComp d-flex">
+        <app-sidebar  *ngIf="isAuthenticated" [activeRoute]="activeRoute" [links]="links"></app-sidebar>
+        <div class="w-100 d-flex flex-column">
+            <div class="progressBar" *ngIf="isAuthenticated">
+                <app-progressbar [routeName]="routerName" [value]="routeValue"></app-progressbar>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <app-footer></app-footer>
+
+<!-- </tui-root> -->
+

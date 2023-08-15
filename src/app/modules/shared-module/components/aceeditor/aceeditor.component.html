@@ -1,0 +1,9 @@
+<ace-editor 
+#editor
+(textChange)="emitTextChange($event)"
+[readOnly]="readonly"
+[text]="text"
+mode ="sql"
+theme="sqlserver"
+[options]="editorOptions"
+style="height: 500px; width: 100%;"></ace-editor>

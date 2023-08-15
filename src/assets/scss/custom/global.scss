@@ -1,0 +1,484 @@
+@import "./variables";
+@import "ace-builds/css/theme/sqlserver";
+
+html,
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.toast-container.toast-top-center {
+  width: 100%;
+  top: 15px;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo';
+}
+
+
+p {
+  margin: 0;
+}
+
+:root {
+  font-size: 1rem;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+@media #{$media-laptop-large} {
+  :root {
+    font-size: 0.9rem;
+  }
+}
+
+@media #{$media-tablet} {
+  :root {
+    font-size: 0.8rem;
+  }
+}
+
+:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+// Style of the app root
+app-root {
+  min-height: 100vh;
+
+  router-outlet + * {
+    flex-grow: 1;
+  }
+
+  app-dicard-changes {
+    width: 100%;
+  }
+
+  .appComp {
+    height: 100%;
+
+    app-sidebar {
+      width: 14%;
+    }
+
+    router-oulet {
+      width: 86%;
+    }
+  }
+
+  .title {
+    font-size: 1.5rem;
+    color: $title-txt;
+    font-weight: bold;
+  }
+
+  .subTitle {
+    font-size: 1.125rem;
+    color: $tui-secondary-text;
+  }
+
+  .sidebar,
+  .side-form {
+    background-color: #fff;
+  }
+
+  background-color: #F8F8F9;
+
+  .side-form-body,
+  .login-form {
+    background-color: #F8F8F9;
+  }
+
+}
+
+.progressBar {
+  width: 100%;
+  padding: 1rem 0 1rem 1rem;
+  background-color: #fff;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+}
+
+app-progressbar {
+  width: 60%;
+  display: block;
+
+  p {
+    font-size: .75rem;
+    color: $tui-secondary-text;
+  }
+}
+
+
+// end style of the app root
+app-close-icon tui-svg {
+  cursor: pointer;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+// start style of the input password
+tui-input-password {
+  margin-top: 1.4rem;
+}
+
+// end style of the input password
+
+// style of validation messages
+.validationMessages {
+  text-align: left;
+}
+
+// end style of validation messages
+
+// style of the navbar
+.navbar {
+  background-color: $form-background-color;
+
+  .logo {
+    max-width: 100%;
+    width: auto;
+    margin: 1rem auto;
+  }
+}
+
+// end style of the navbar
+
+// style of the footer
+.footer {
+  background-color: #fff;
+
+  .footerTxt {
+    font-size: 1rem;
+    color: $tui-secondary-text;
+    margin: 0.4rem auto;
+  }
+}
+
+// end style of the footer
+
+// style of the login
+.login {
+  background-image: url('../../images/backgrounds/arch_1.png');
+  height: 80%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  .pageTitle {
+    font-size: 3rem;
+    font-weight: bold;
+    color: $tui-primary-text;
+    margin-bottom: 1rem;
+  }
+
+  .pageSubTitle {
+    font-size: 1.2rem;
+    color: $tui-secondary-text;
+    margin-bottom: 2rem;
+  }
+
+  .form_container {
+    width: 50%;
+    background-color: $form-background-color;
+    height: 70%;
+    border-radius: $tui-radius-m;
+
+    .form_values {
+      width: 60%;
+      height: 90%;
+      font-family: $tui-font-text;
+      text-align: center;
+
+      .form_title {
+        color: $tui-primary-text;
+        font-weight: bold;
+        font-size: $form-title-font-size;
+
+        .form_subtitle {
+          color: $tui-secondary-text;
+          font-weight: normal;
+          font-size: $form-subtitle-font-size;
+        }
+      }
+
+      .forget_password {
+        color: $tui-secondary-text;
+        margin-left: auto;
+        text-decoration: none;
+        margin-top: 1rem;
+        cursor: pointer;
+      }
+    }
+
+    app-button {
+      width: 60%;
+      margin: 0 auto;
+    }
+  }
+}
+
+// end style of the login
+
+// style of the app loader
+app-loader {
+  height: 100%;
+  background-color: #35353840;
+
+  tui-loader {
+    height: 100%;
+
+    .t-loader {
+      margin: auto;
+      color: $tui-primary !important;
+    }
+  }
+}
+
+// end style of the app loader
+
+// style of the side bar
+.sideBar {
+  width: 100%;
+  height: 100%;
+  padding: 2rem 1rem;
+  border-right: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  background-color: #fff;
+
+  .sideBarMenuTitle {
+    font-size: 1.25rem;
+    color: $title-txt;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  .sideBarMenuLink {
+    tui-svg {
+      margin-right: .5rem;
+    }
+
+    a {
+      color: $tui-secondary-text;
+      text-decoration: none;
+    }
+
+    .activeLink {
+      color: $tui-primary !important;
+      font-weight: bold;
+    }
+
+    margin-bottom: 1rem;
+  }
+
+}
+
+// end style of the side bar
+
+
+// Start of popup styles
+.popup {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(56, 56, 56, 0.30);
+
+  .popupSide {
+    width: 25%;
+    height: 100%;
+    background-color: #fff;
+    margin-left: auto;
+    border-radius: 20px;
+
+    .addPopop {
+      width: 80%;
+      margin: 0 auto;
+      height: 100%;
+
+      .popupHeader {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+
+    .discardChangesContent {
+      border: 1px solid #C4C4C4;
+      border-radius: inherit;
+      padding: 1rem;
+
+
+    }
+  }
+
+  .btns {
+    width: 100%;
+
+    .popupBtn {
+      button .t-wrapper {
+        background-color: rgba(0, 0, 0, 0.08) !important;
+        color: #000 !important;
+      }
+    }
+  }
+}
+
+// end of popup styles
+
+// style of the user roles component
+.userRoles,
+.userObjectives,
+.userProjects {
+  width: 100%;
+  height: 100%;
+
+  .userRolesContainer {
+    // user roles container
+    width: 100%;
+    padding: .5rem .5rem .5rem 0;
+
+    .userRolesCreation {
+      // user roles content parent
+      padding: 1rem 0 1rem 1rem;
+      height: 100%;
+
+      .userRolesTitles {
+        .userRoleTitle {
+          font-size: 1.5rem;
+          color: $title-txt;
+          font-weight: bold;
+        }
+
+        .userRoleSubTitle {
+          font-size: 1.125rem;
+          color: $tui-secondary-text;
+        }
+      }
+
+      .userRolesHeader {
+
+        // user roles header
+
+      }
+
+      .userRoleContent {
+        width: 100%;
+        height: 70%;
+        background-color: #fff;
+        border-radius: var(--tui-radius-s);
+
+        .userRoleImg {
+          width: 15%;
+        }
+
+        .addBtn {
+          width: 60%;
+
+          app-button {
+            color: #fff;
+            display: block;
+            width: 36%;
+            margin: 0 auto;
+
+            app-plus {
+              border: 1px solid #fff;
+              border-radius: 50%;
+              padding: 0.01rem;
+              margin-right: 0.5rem;
+            }
+          }
+        }
+
+        app-table {
+          width: 98%;
+
+        }
+
+      }
+
+      //user roles main content
+
+    }
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse !important;
+
+  th,
+  td {
+    border: 0;
+  }
+
+  th {
+    color: #000;
+    font-weight: bold;
+    font-size: 1.125rem;
+    text-align: left;
+    padding: .5rem;
+  }
+
+  td {
+    color: $tui-secondary-text;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  tr:nth-child(odd) td {
+    background-color: #F8F8F9;
+  }
+}
+.customEnvName {
+  height: 3.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #D7D7D7;
+  background: #FFF;
+  padding: 0rem 0.75rem;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.10);
+  margin-bottom: .5rem;
+  .envName {
+    .envTitle {
+      color: $tui-secondary-text;
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 0.875rem;
+    }
+
+    .envValue {
+      color: $tui-primary-text;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 1rem;
+    }
+  }
+
+  .editIcon {
+    color: $tui-secondary-text;
+    cursor: pointer;
+  }
+}
+.addUserRole {
+  font-size: 1rem;
+  color: $tui-secondary;
+  cursor: pointer;
+  text-align: center;
+  span {
+    margin-left: .25rem;
+    font-weight: bold;
+  }
+}
+// end style of the user roles component

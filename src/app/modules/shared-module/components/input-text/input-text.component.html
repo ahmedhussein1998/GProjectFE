@@ -1,0 +1,16 @@
+<tui-input [formControl]="inputControl" *ngIf="type === 'clear'; else password"
+(ngModelChange)="onInputChange($event)">
+   {{name}}
+</tui-input>
+<ng-template #password>
+  <tui-input-password (ngModelChange)="onInputChange($event)"
+                      [formControl]="inputControl">
+      {{name}}
+  </tui-input-password>
+</ng-template>
+<ng-container *ngIf="inputControl.invalid && inputControl.touched">
+    <tui-error class="validationMessages" *ngFor="let errorMsg of errorList"
+               [error]="errorMsg">
+    </tui-error>
+</ng-container>
+

@@ -1,0 +1,156 @@
+// Media sizes:
+
+
+
+
+$border-color: #E2E1E3;
+$form-background-color: #F6F6F8;
+$tui-font-text: 'Cairo';
+$tui-font-text-m: bold 1rem/1.5rem var(--tui-font-text);
+$tui-font-text-s: normal 0.5rem/1.25rem var(--tui-font-text);
+$tui-primary: #480A86;
+$title-txt: #2F354D;
+$tui-secondary: #EA008A;
+$tui-toggle-secondary: #00000033;
+$tui-primary-text: #2F354D;
+$tui-secondary-text: #818E94;
+$tui-white-txt: #fff;
+$tui-radius-s: 0;
+$tui-radius-m: 0.75rem;
+$tui-radius-l: 1.25rem;
+$tui-height-l: 4.375rem;
+$form-title-font-size: 1.5rem;
+$form-subtitle-font-size: 1.2rem;
+$media-laptop-large: "only screen and (max-width : 1440px)";
+$media-laptop: "only screen and (max-width : 1024px)";
+$media-tablet: "only screen and (max-width : 768px)";
+$media-mobile-large: "only screen and (max-width : 425px)";
+$media-mobile-medium: "only screen and (max-width : 375px)";
+$media-mobile-small: "only screen and (max-width : 320px)";
+$media-mobile-and-higher-only: "only screen and (min-width : 426px)";
+$media-tablets-and-higher-only: "only screen and (min-width : 769px)";
+$media-laptops-and-higher-only: "only screen and (min-width : 1366px)";
+
+// Themeing bootstap
+$primary: #480A86;
+$secondary: $tui-secondary;
+$border-width: 1px;
+$border-radius: 8px;
+$modal-border-radius: 20px;
+
+:host {
+    --tui-font-text: $tui-font-text;
+    --tui-font-text-m: $tui-font-text-m;
+    --tui-font-text-s: $tui-font-text-s;
+    --tui-primary: $tui-primary !important;
+    --tui-primary-hover: $tui-primary !important;
+    --tui-primary-active: $tui-primary !important;
+    --tui-secondary: $tui-secondary !important;
+    --tui-secondary-hover: $tui-secondary !important;
+    --tui-secondary-active: $tui-secondary;
+    --tui-primary-text: $tui-primary-text;
+    --tui-secondary-text: $tui-secondary-text;
+    --tui-radius-s: $tui-radius-s;
+    --tui-radius-m: $tui-radius-m;
+    --tui-height-l: $tui-radius-l;
+    --form-background-color: $form-background-color;
+    --tui-white-txt: $tui-white-txt;
+    --tui-primary: $tui-primary !important;
+}
+
+// Primary Button
+[tuiWrapper][data-appearance='primary'] {
+    background: $tui-primary !important;
+    color: var(--tui-primary-text) !important;
+
+    .wrapper-hover {
+        background: $tui-primary !important;
+    }
+
+
+    .wrapper-active {
+        background: $tui-primary !important;
+    }
+
+    .wrapper-invalid {
+        color: var(--tui-negative-night) !important;
+        background: var(--tui-error-bg) !important;
+
+        .wrapper-hover {
+            background: var(--tui-error-bg-hover) !important;
+        }
+
+        .wrapper-active {
+            background: var(--tui-error-bg-hover) !important;
+        }
+
+        .wrapper-focus {
+            --tui-focus: var(--tui-error-fill) !important;
+        }
+    }
+}
+
+// Secondary button
+[tuiWrapper][data-appearance='secondary'] {
+    background: $tui-secondary !important;
+    color: var(--tui-white-txt) !important;
+
+    .wrapper-hover {
+        background: $tui-secondary !important;
+    }
+
+
+    .wrapper-active {
+        background: $tui-secondary !important;
+    }
+
+    .wrapper-invalid {
+        color: var(--tui-negative-night) !important;
+        background: var(--tui-error-bg) !important;
+
+        .wrapper-hover {
+            background: var(--tui-error-bg-hover) !important;
+        }
+
+        .wrapper-active {
+            background: var(--tui-error-bg-hover) !important;
+        }
+
+        .wrapper-focus {
+            --tui-focus: var(--tui-error-fill) !important;
+        }
+    }
+}
+tui-toggle [tuiWrapper][data-appearance='secondary'] {
+    background: $tui-toggle-secondary !important;
+    color: var(--tui-white-txt) !important;
+
+    .wrapper-hover {
+        background: $tui-secondary !important;
+    }
+
+
+    .wrapper-active {
+        background: $tui-secondary !important;
+    }
+
+    .wrapper-invalid {
+        color: var(--tui-negative-night) !important;
+        background: var(--tui-error-bg) !important;
+
+        .wrapper-hover {
+            background: var(--tui-error-bg-hover) !important;
+        }
+
+        .wrapper-active {
+            background: var(--tui-error-bg-hover) !important;
+        }
+
+        .wrapper-focus {
+            --tui-focus: var(--tui-error-fill) !important;
+        }
+    }
+}
+// .t-segment{
+//     background: $tui-primary !important;
+// }

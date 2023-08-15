@@ -1,0 +1,63 @@
+<div class="userProjects d-flex">
+    <div class="userRolesContainer">
+
+        <div class="userRolesCreation">
+            <div class="userRolesHeader d-flex justify-content-between">
+                <div class="userRolesTitles">
+                    <div class="userRoleTitle">
+                        <p>
+                            Projects
+                        </p>
+                    </div>
+                    <div class="userRoleSubTitle">
+                        <p>
+                            Identify Your Projects
+                        </p>
+                    </div>
+                </div>
+                <div class="userRolesActions">
+                    <p (click)="openAddPopup($event)" class="addUserRole">
+                        <app-plus></app-plus>
+                        <span>
+                            Add Project
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div *ngIf="!userRoles"
+                class="userRoleContent mt-5 d-flex flex-column justify-content-center align-items-center">
+                <div class="userRoleImg">
+                    <img src="../../../../../../assets/images/projects.svg" alt="" class="img-fluid">
+                </div>
+                <div class="userRolesTitles text-center">
+                    <div class="userRoleTitle">
+                        <p>
+                            Add Project
+                        </p>
+                    </div>
+                    <div class="userRoleSubTitle">
+                        <p>
+                            No Projects has been add yet, Add!
+                        </p>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <app-button [addIcon]="addIcon" [btnName]="btnName" [type]="button" [appearence]="secondary">
+                    </app-button>
+                </div>
+
+            </div>
+            <div *ngIf="userRoles"
+                class="userRoleContent mt-5 d-flex flex-column justify-content-start align-items-center">
+                <app-table (show)="editProject($event)" [noDescription]="noDescription" [environments]="environments" [isActiveExist]="addIcon"
+                    [header]="header" [dataValues]="data"></app-table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<app-add-user-projects [editFlag]="editPopupFlag" [projectData]="editedProject" (returnData)="getAllProjects()"
+     (closePopup)="closAddForm()" *ngIf="showAddPopup"
+   ></app-add-user-projects>

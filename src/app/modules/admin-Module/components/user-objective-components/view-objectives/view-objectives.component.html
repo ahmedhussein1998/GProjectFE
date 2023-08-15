@@ -1,0 +1,71 @@
+<div class="userObjectives d-flex">
+    <div class="userRolesContainer">
+
+        <div class="userRolesCreation">
+            <div class="userRolesHeader d-flex justify-content-between">
+                <div class="userRolesTitles">
+                    <div class="userRoleTitle">
+                        <p>
+                            Objectives
+                        </p>
+                    </div>
+                    <div class="userRoleSubTitle">
+                        <p>
+                            Add Request Objectives
+                        </p>
+                    </div>
+                </div>
+                <div class="userRolesActions">
+                    <p class="addUserRole" (click)="showForm()">
+                        <app-plus></app-plus>
+                        <span>
+                            Add Objective
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div *ngIf="!data?.length"
+                class="userRoleContent mt-5 d-flex flex-column justify-content-center align-items-center">
+                <div class="userRoleImg">
+                    <img src="../../../../../../assets/images/objectives.svg" alt="" class="img-fluid">
+                </div>
+                <div class="userRolesTitles text-center">
+                    <div class="userRoleTitle">
+                        <p>
+                            Add Objective
+                        </p>
+                    </div>
+                    <div class="userRoleSubTitle">
+                        <p>
+                            No Objectives has been add yet, Add!
+                        </p>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <app-button (click)="showForm()" [addIcon]="addIcon" [btnName]="btnName" [type]="button"
+                        [appearence]="secondary">
+                    </app-button>
+                </div>
+
+            </div>
+            <div *ngIf="data?.length"
+                class="userRoleContent mt-5 d-flex flex-column justify-content-start align-items-center">
+                <app-table (show)="openEditPopup($event)" [noDescription]="noDescription" [isActiveExist]="addIcon"
+                    [header]="header" [dataValues]="data"></app-table>
+                <!-- <app-dicard-changes></app-dicard-changes> -->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Edit Objective Component -->
+<app-edit-objectives (returnData)="getAllObjectives()" [data]="data" [objectiveId]="objectiveId"
+    [objectiveName]="objectiveName" [formInputValue]="formInputValue" (closePopup)="closeEditForm()"
+    [showPopup]="showPopup"></app-edit-objectives>
+
+<!-- Add Objective Component -->
+<app-add-objectives (returnData)="getAllObjectives()" [data]="data"
+     (closePopup)="closeAddPopup()"
+    [showPopup]="showAddPopup"></app-add-objectives>

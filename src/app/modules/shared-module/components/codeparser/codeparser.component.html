@@ -1,0 +1,31 @@
+<app-aceeditor  [readonly]="disableEditor" (textChange)="getQuery($event)" [text]="text"></app-aceeditor>
+<select (change)="updateSyntax($event)">
+    <option value="">Select Your Database Type </option>
+    <option value="TransactSQL">
+        Sql
+    </option>
+    <option value="MySQL">
+        MySql
+    </option>
+    <option value="PostgresQL">
+        Postgress
+    </option>
+    <option value="MariaDB">
+        mariaDB
+    </option>
+    <option value="Sqlite">
+        Sqlite
+    </option>
+    <option value="BigQuery">
+        BigQuery
+    </option>
+
+</select>
+<div *ngIf="parsedQuery">
+    <pre>{{ parsedQuery | json }}</pre>
+</div>
+<div *ngIf="error" class="error">
+    <div>{{error.name}}</div>
+    <div>Start From Line Number {{error?.location?.start?.line}} and Column Number {{error?.location?.start?.column}}</div>
+    <div>End at Line Number {{error?.location?.end?.line}} and Column Number {{error?.location?.end?.column}}</div>
+</div>

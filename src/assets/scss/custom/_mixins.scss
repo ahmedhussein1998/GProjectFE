@@ -1,0 +1,47 @@
+@mixin transition($property, $duration) {
+    -webkit-transition: $property $duration ease-in-out;
+    -moz-transition: $property $duration ease-in-out;
+    -ms-transition: $property $duration ease-in-out;
+    -o-transition: $property $duration ease-in-out;
+    transition: $property $duration ease-in-out;
+  }
+  
+  @mixin fixed_square($side) {
+    width: $side;
+    min-width: $side;
+    max-width: $side;
+    height: $side;
+    min-height: $side;
+    max-height: $side;
+  }
+  
+  @mixin background_cover($url) {
+    background-image: url($url);
+    background-size: cover;
+    background-position: center center;
+  }
+  
+  @mixin radius($px) {
+    border-radius: $px !important;
+    -webkit-border-radius: $px !important;
+    -moz-border-radius: $px !important;
+    -ms-border-radius: $px !important;
+    -o-border-radius: $px !important;
+  }
+  
+  @mixin transfrom_scale($scale) {
+    transform: scale($scale);
+    -webkit-transform: scale($scale);
+    -moz-transform: scale($scale);
+    -ms-transform: scale($scale);
+    -o-transform: scale($scale);
+  }
+  
+  @mixin translate($x, $y) {
+    transform: translate($x, $y);
+    -webkit-transform: translate($x, $y);
+    -moz-transform: translate($x, $y);
+    -ms-transform: translate($x, $y);
+    -o-transform: translate($x, $y);
+  }
+  

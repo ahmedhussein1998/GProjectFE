@@ -1,0 +1,10 @@
+    <p>{{routeName}}</p>
+    <tui-progress-segmented
+        tuiProgressBar
+        size="m"
+        class="progress"
+        [value]="value"
+        [max]="4"
+        (change)="onValueChanged(value)"
+        [colors]="primary"
+    ></tui-progress-segmented>

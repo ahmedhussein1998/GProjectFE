@@ -1,0 +1,24 @@
+
+<tui-root>
+  <tui-multi-select
+    class="b-form tui-space_top-5"
+    [formControl]="inputControl"
+    [tuiTextfieldLabelOutside]="true"
+    [tuiTextfieldCleaner]="true"
+    [editable]="false"
+    [disabledItemHandler]="disableHandler"
+  >
+    Star Wars persons
+
+    <select
+      tuiSelect
+      multiple
+      [items]="newItems"
+    ></select>
+  </tui-multi-select>
+</tui-root>
+<ng-container *ngIf="inputControl.invalid && inputControl.touched">
+  <tui-error class="validationMessages" *ngFor="let errorMsg of errorList"
+             [error]="errorMsg">
+  </tui-error>
+</ng-container>

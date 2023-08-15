@@ -1,0 +1,55 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>{{header.num}}</th>
+            <th>{{header.name}} </th>
+            <th *ngIf="email">
+                {{header.email}}
+            </th>
+            <th *ngIf="roles">
+                {{header.roles}}
+            </th>
+            <th *ngIf="approve">
+                {{header.roles}}
+            </th>
+            <th *ngIf="noDescription">{{header.description}} </th>
+            <th *ngIf="environments">{{header.environments}} </th>
+            <th *ngIf="isActiveExist">{{header.isActive}} </th>
+            <th>{{header.action}} </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of dataValues; let i = index;">
+            <td>
+                {{i+1| number:'2.0'}}
+            </td>
+            <td>
+                {{item.name}}
+            </td>
+            <td *ngIf="email">
+                {{item.email}}
+            </td>
+            <td *ngIf="roles">
+                {{item.userRoles}}
+            </td>
+            <td *ngIf="approve">
+                Assign Environment
+            </td>
+            <td *ngIf="environments">
+                {{item.countOfEnvironments}}
+            </td>
+            <td *ngIf="noDescription">
+                {{item.description}}
+            </td>
+            <td *ngIf="isActiveExist">
+                <app-toggle (valueChanged)="handleToggle($event , i)" [formControlValue]="item.isActive"></app-toggle>
+            </td>
+            <td *ngIf="!isActiveExist">
+                {{item.action}}
+            </td>
+            <td *ngIf="isActiveExist">
+                <app-dots (openPopup)="editValue(i)"></app-dots>
+            </td>
+        </tr>
+    </tbody>
+</table>

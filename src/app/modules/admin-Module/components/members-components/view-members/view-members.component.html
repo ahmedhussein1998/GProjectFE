@@ -1,0 +1,59 @@
+<div class="userProjects d-flex">
+    <div class="userRolesContainer">
+
+        <div class="userRolesCreation">
+            <div class="userRolesHeader d-flex justify-content-between">
+                <div class="userRolesTitles">
+                    <div class="userRoleTitle">
+                        <p>
+                            Members
+                        </p>
+                    </div>
+                    <div class="userRoleSubTitle">
+                        <p>
+                            Add Your Organization Members
+                        </p>
+                    </div>
+                </div>
+                <div (click)="showAddMember()" class="userRolesActions">
+                    <p class="addUserRole">
+                        <app-plus></app-plus>
+                        <span>
+                            Add Members
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div *ngIf="!userRoles"
+                class="userRoleContent mt-5 d-flex flex-column justify-content-center align-items-center">
+                <div class="userRoleImg">
+                    <img src="../../../../../../assets/images/members.svg" alt="" class="img-fluid">
+                </div>
+                <div class="userRolesTitles text-center">
+                    <div class="userRoleTitle">
+                        <p>
+                            Add Members
+                        </p>
+                    </div>
+                    <div class="userRoleSubTitle">
+                        <p>
+                            No Members has been add yet, Add!
+                        </p>
+                    </div>
+                </div>
+                <div class="addBtn">
+                    <app-button (eventHandler)="showAddMember()" [addIcon]="addIcon" [btnName]="btnName" [type]="button" [appearence]="secondary">
+                    </app-button>
+                </div>
+
+            </div>
+            <div *ngIf="userRoles"
+                class="userRoleContent mt-5 d-flex flex-column justify-content-start align-items-center">
+                <app-table [email]="isEmail" [roles]="role" [approve]="approval" [noDescription]="noDescription" [environments]="environments" [isActiveExist]="addIcon" [header]="header" [dataValues]="data"></app-table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<app-add-members [rolesSelectedArray]="rolesArray" *ngIf="showPopup" ></app-add-members>

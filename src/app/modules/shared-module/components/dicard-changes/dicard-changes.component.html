@@ -1,0 +1,14 @@
+<div class="popup">
+    <div class="popupSide d-flex flex-column justify-content-center align-items-center">
+        <div class="discardChangesContent d-flex flex-column justify-content-around align-items-center">
+            <p class="title">Discard Changes</p>
+            <p class="subTitle">Are you sure you want to discard your changes?</p>
+            <div class="btns d-flex flex-row justify-content-around">
+                <app-button class="popupBtn" [btnName]="secBtnName" [type]="button" [appearence]="primary"
+                    (eventHandler)="cancelDiscard()"></app-button>
+                <app-button [btnName]="btnName" [type]="button" [appearence]="primary"
+                    (eventHandler)="confirmDiscard()"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

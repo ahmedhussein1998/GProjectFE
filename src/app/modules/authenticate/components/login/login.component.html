@@ -1,0 +1,47 @@
+
+<app-navbar></app-navbar>
+<div class="login d-flex flex-column justify-content-center align-items-center">
+    <div class="pageTitle">
+        <p>
+            Login to your Account
+        </p>
+    </div>
+    <div class="pageSubTitle">
+        <p>
+            If you already have an account register you can login here!
+        </p>
+    </div>
+    <div class="form_container d-flex flex-column justify-content-center align-items-center">
+        <div class="form_values d-flex flex-column justify-content-around m-auto">
+            <div class="form_title">
+                <p>
+                    Access your account
+                </p>
+                <p class="form_subtitle">
+                    Fill all data, it’s required.
+                </p>
+            </div>
+            <form class="b-form d-flex flex-column justify-content-around" [formGroup]="loginForm"
+                >
+                <!-- Shared Input Email -->
+                <app-input-text [name]="emailVaule" [inputControl]="email"
+                    [inputErrorCondition]="loginForm?.get('email').invalid && loginForm?.get('email').dirty"
+                    [inputErrorMessage]="computedError"></app-input-text>
+                <!-- Shared Input Password -->
+                <app-input-password [passwordControl]="password"
+                    [errorMessage]="passwordError"
+                    [errorCondition]="loginForm?.get('password').invalid && loginForm?.get('password').dirty"
+                    [name]="PassName"></app-input-password>
+                <a tuiLink class="forget_password">
+                    Forget Password
+                </a>
+                <!-- <button tuiButton type="submit" appearance="primary"
+                    class="tui-space_right-3 tui-space_bottom-3 cust_btn">
+                    Login
+                </button> -->
+                <app-button (eventHandler)="submitForm()"  [btnName]="btnName" [appearence]="btnAppearence"></app-button>
+            </form>
+        </div>
+    </div>
+
+</div>
