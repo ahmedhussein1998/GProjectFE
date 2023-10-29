@@ -36,9 +36,9 @@ export class LoginService {
           let message = 'Login Successful';
           this.auth.setToken(data['token']);
           // to check if the user is an admin
-          if(isAdmin(data['permissions'])){
-            this.route.navigate([`/admin/${User_Roles}`]);
-          }
+          // if(isAdmin(data['permissions'])){
+          //   this.route.navigate([`/admin/${User_Roles}`]);
+          // }
           this.successToaster(message);
           this.auth.updateData(true)
           this.auth.showLoader(true)

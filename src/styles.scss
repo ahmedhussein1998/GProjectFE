@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* You can add global styles to this file, and also import other style files@ */
 // Importing partails
 @use "./assets/scss/custom/fonts";
 @use "./assets/scss/custom/mixins";
@@ -7,5 +6,8 @@
 @use "./assets/scss/custom/taiga-theme.scss";
 @use "./assets/scss/custom/customClasses.scss";
 @use "./assets/scss/custom/global";
+@import "./node_modules/bootstrap/scss/bootstrap.scss";
+
+
 
 

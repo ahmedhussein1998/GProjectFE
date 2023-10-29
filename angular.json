@@ -107,12 +107,18 @@
               "src/assets"
             ],
             "styles": [
+
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "9360688b-53b6-43e9-9fac-24cbb6a00a4c"
   }
 }

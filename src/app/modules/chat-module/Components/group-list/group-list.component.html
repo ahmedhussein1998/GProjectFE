@@ -1,0 +1,6 @@
+<div>
+    <select [(ngModel)]="selectedGroupId" (change)="joinChat()" >
+      <option *ngFor="let group of signalRService.AvailableGroups" [value]="group.value">{{ group.name }}</option>
+    </select>
+  </div>
+

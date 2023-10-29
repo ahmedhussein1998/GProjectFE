@@ -1,0 +1,47 @@
+<form (ngSubmit)="sendMessage()" autocomplete="off">
+    <div class="input-container">
+      <input
+        *ngIf="!recording"
+        type="text"
+        [(ngModel)]="content"
+        name="content"
+        class="form-control"
+        placeholder="Type a message..."
+      />
+      <button
+        class="record-button"
+        (click)="toggleRecording()"
+        [ngClass]="{ 'recording': recording }"
+      >
+        {{ recording ? 'Stop' : 'Record' }}
+      </button>
+      <button
+        *ngIf="audioBlob"
+        class="play-button"
+        (click)="playAudio()"
+      >
+        Play
+      </button>
+      <button
+        *ngIf="audioBlob"
+        class="delete-button"
+        (click)="deleteAudio()"
+      >
+        Delete
+      </button>
+    </div>
+    <div class="send-button-container">
+      <button
+        [disabled]="!content && !audioBlob"
+        class="send-button"
+        type="submit"
+      >
+        Send
+      </button>
+    </div>
+
+    <audio class="audio-file" controls *ngIf="url">
+        <source [src]="senitize(url)" type="audio/wav" >
+    </audio>
+  </form>
+  
